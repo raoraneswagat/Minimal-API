@@ -16,4 +16,12 @@ await context.Response.WriteAsync(content);
 
 });
 
+app.MapPost("/products",async (HttpContext context,Product product) => {
+
+products.Add(product);
+
+await context.Response.WriteAsync("Product Added");
+
+});
+
 app.Run();
