@@ -26,12 +26,14 @@ public static class ProductMapGroup
             Product? product = products.Where(w => w.Id == id).FirstOrDefault();
             if (product == null)
             {
-                context.Response.StatusCode = 400;
-                await context.Response.WriteAsync("Incorrect Product Id");
-                return;
+                // context.Response.StatusCode = 400;
+                // await context.Response.WriteAsync("Incorrect Product Id");
+                return Results.BadRequest(new {Message="Incorrect Product Id"});
             }
 
-            await context.Response.WriteAsync(JsonSerializer.Serialize(product));
+            //await context.Response.WriteAsync(JsonSerializer.Serialize(product));
+
+            return Results.Json<Product>((product));
 
         });
 
