@@ -17,7 +17,7 @@ await context.Response.WriteAsync(content);
 
 });
 
-app.MapGet("/products/{id}",async (HttpContext context,int id) => {
+app.MapGet("/products/{id:int}",async (HttpContext context,int id) => {
 
 Product? product = products.Where(w=>w.Id == id).FirstOrDefault();
 if(product==null)
